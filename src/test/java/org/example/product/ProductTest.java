@@ -30,7 +30,7 @@ public class ProductTest extends AbstractTestNGSpringContextTests {
 
         productBuilder.productCode(a1);
 
-        ProductEntity productEntity= productBuilder.build();
+        ProductEntity productEntity = productBuilder.build();
 
         productRepository.save(productEntity);
 

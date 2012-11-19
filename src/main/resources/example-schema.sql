@@ -21,6 +21,7 @@ CREATE TABLE CUSTOMER_ORDER_ITEM (
   order_item_id NUMBER NOT NULL,
   order_id NUMBER NOT NULL,
   product_id NUMBER NOT NULL,
+  quantity NUMBER NOT NULL,
   CONSTRAINT pk_order_item_id PRIMARY KEY (order_item_id),
   CONSTRAINT fk_order_id FOREIGN KEY (order_id) REFERENCES customer_order(order_id),
   CONSTRAINT fk_product_id FOREIGN KEY (product_id) REFERENCES product_item(product_id),

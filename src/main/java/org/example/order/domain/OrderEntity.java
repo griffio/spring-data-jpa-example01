@@ -2,6 +2,7 @@ package org.example.order.domain;
 
 import com.google.common.collect.Lists;
 import org.example.dao.domain.AbstractPersistableSequence;
+import org.example.product.domain.ProductEntity;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDateTime;
 
@@ -44,9 +45,13 @@ public class OrderEntity extends AbstractPersistableSequence {
         return created;
     }
 
-    public void addItem(OrderItemEntity orderItem) {
+    public OrderItemEntity addProductItem(ProductEntity product) {
+        OrderItemEntity orderItem= new OrderItemEntity();
         orderItem.setOrder(this);
+        orderItem.setProduct(product);
+        orderItem.setQuantity(1);
         items.add(orderItem);
+        return orderItem;
     }
 
     public List<OrderItemEntity> getItems() {

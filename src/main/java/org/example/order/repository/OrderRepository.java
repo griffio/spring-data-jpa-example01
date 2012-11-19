@@ -6,6 +6,6 @@ import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.data.repository.CrudRepository;
 
 @ExampleRepository
-public interface OrderRepository extends CrudRepository<OrderEntity, Long>, QueryDslPredicateExecutor<OrderEntity> {
+public interface OrderRepository extends CrudRepository<OrderEntity, Long>, QueryDslPredicateExecutor<OrderEntity>, Order {
 
 }
