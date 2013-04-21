@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="usertype.core-3.0.0.GA">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-14/filestore/org.jadira.usertype/usertype.core/3.0.0.GA/jar/2e67419d4997662b4e9a9c5958b1eb0ce4a6c6ca/usertype.core-3.0.0.GA.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-23/filestore/org.jadira.usertype/usertype.core/3.0.0.GA/jar/2e67419d4997662b4e9a9c5958b1eb0ce4a6c6ca/usertype.core-3.0.0.GA.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-14/filestore/org.jadira.usertype/usertype.core/3.0.0.GA/source/ca6d424afeea68bc5404bee15ef87ee885c39134/usertype.core-3.0.0.GA-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-23/filestore/org.jadira.usertype/usertype.core/3.0.0.GA/source/ca6d424afeea68bc5404bee15ef87ee885c39134/usertype.core-3.0.0.GA-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

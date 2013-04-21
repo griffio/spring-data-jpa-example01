@@ -16,10 +16,22 @@
       <entry name="?*.ftl" />
       <entry name="?*.sql" />
     </wildcardResourcePatterns>
-    <annotationProcessing enabled="true" useClasspath="true">
-      <processor name="com.mysema.query.apt.jpa.JPAAnnotationProcessor" options="" />
-      <processModule name="spring-data-jpa-example01" generatedDirName="src/main/generated" />
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processor name="com.mysema.query.apt.jpa.JPAAnnotationProcessor" />
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Profile1" enabled="true">
+        <sourceOutputDir name="src/main/generated" />
+        <outputRelativeToContentRoot value="true" />
+        <processor name="com.mysema.query.apt.jpa.JPAAnnotationProcessor" />
+        <processorPath useClasspath="true" />
+        <module name="spring-data-jpa-example01" />
+      </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="spring-data-jpa-example01" target="" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 

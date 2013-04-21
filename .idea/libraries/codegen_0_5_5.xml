@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="codegen-0.5.5">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-14/filestore/com.mysema.codegen/codegen/0.5.5/jar/fe49f6708e9199d064f84caba96b9f683a9aba29/codegen-0.5.5.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-23/filestore/com.mysema.codegen/codegen/0.5.5/jar/fe49f6708e9199d064f84caba96b9f683a9aba29/codegen-0.5.5.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-14/filestore/com.mysema.codegen/codegen/0.5.5/source/500bd50c60ce065c992eaa3204e644fad9d9dcee/codegen-0.5.5-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-23/filestore/com.mysema.codegen/codegen/0.5.5/source/500bd50c60ce065c992eaa3204e644fad9d9dcee/codegen-0.5.5-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

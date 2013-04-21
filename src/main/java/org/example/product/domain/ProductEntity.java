@@ -1,10 +1,7 @@
 package org.example.product.domain;
 
-import com.mysema.query.annotations.PropertyType;
-import com.mysema.query.annotations.QueryType;
 import org.example.dao.domain.AbstractPersistableSequence;
 import org.example.dao.hibernate.SkuType;
-import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.AttributeOverride;
@@ -12,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 
 @SuppressWarnings("JpaDataSourceORMInspection")
 
@@ -24,17 +22,24 @@ public class ProductEntity extends AbstractPersistableSequence {
 
     @Column(name = "product_sku")
     private Sku productCode;
+    @Column(name = "product_cost")
+    private BigDecimal cost;
 
     protected ProductEntity() {
     }
 
-    public ProductEntity(Long id, Sku productCode) {
+    public ProductEntity(Long id, Sku productCode, BigDecimal cost) {
         setId(id);
         this.productCode = productCode;
+        this.cost = cost;
     }
 
     public Sku getProductCode() {
         return productCode;
+    }
+
+    public BigDecimal getCost() {
+        return cost;
     }
 
 }

@@ -11,14 +11,17 @@ import org.testng.annotations.Test;
 
 import javax.inject.Inject;
 
+import java.math.BigDecimal;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.number.OrderingComparison.comparesEqualTo;
 
 @ContextConfiguration
 public class ProductTest extends AbstractTestNGSpringContextTests {
 
-    private ProductEntityBuilder productBuilder = new ProductEntityBuilder();
+    private final ProductEntityBuilder productBuilder = new ProductEntityBuilder();
 
     private final Sku a1 = new Sku("A1");
 
@@ -28,21 +31,20 @@ public class ProductTest extends AbstractTestNGSpringContextTests {
     @Test
     public void saveOrder() {
 
-        productBuilder.productCode(a1);
+        productBuilder.code(a1).cost(new BigDecimal("10.0"));
 
         ProductEntity productEntity = productBuilder.build();
 
         productRepository.save(productEntity);
-
-        ProductEntity first = productRepository.findOne(productEntity.getId());
-        assertThat(first.getId(), notNullValue());
-        assertThat(first.getProductCode(), equalTo(a1));
-
     }
 
-    @Test(dependsOnMethods={"saveOrder"})
+    @Test(dependsOnMethods = {"saveOrder"})
     public void findProduct() {
+
         ProductEntity first = productRepository.findOne(ProductPredicate.findByProductCode(a1));
+
+        assertThat(first.getId(), notNullValue());
+        assertThat(first.getCost(), comparesEqualTo(new BigDecimal("10.0")));
         assertThat(first.getProductCode(), equalTo(a1));
     }
 

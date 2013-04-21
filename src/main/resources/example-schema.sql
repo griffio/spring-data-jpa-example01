@@ -8,6 +8,7 @@ CREATE TABLE CUSTOMER (
 CREATE TABLE PRODUCT_ITEM (
   product_id  NUMBER NOT NULL,
   product_sku VARCHAR(10),
+  product_cost NUMBER(8,2),
   CONSTRAINT pk_product_id PRIMARY KEY (product_id)
 );
 

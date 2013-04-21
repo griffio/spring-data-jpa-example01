@@ -21,6 +21,8 @@ public class QProductEntity extends EntityPathBase<ProductEntity> {
 
     public final org.example.dao.domain.QAbstractPersistableSequence _super = new org.example.dao.domain.QAbstractPersistableSequence(this);
 
+    public final NumberPath<java.math.BigDecimal> cost = createNumber("cost", java.math.BigDecimal.class);
+
     //inherited
     public final NumberPath<Long> id = _super.id;
 

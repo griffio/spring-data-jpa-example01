@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="querydsl-codegen-2.8.2">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-14/filestore/com.mysema.querydsl/querydsl-codegen/2.8.2/jar/ed006102ad4b5f51e2f756df0bea9427d692b1a4/querydsl-codegen-2.8.2.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-23/filestore/com.mysema.querydsl/querydsl-codegen/2.8.2/jar/ed006102ad4b5f51e2f756df0bea9427d692b1a4/querydsl-codegen-2.8.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-14/filestore/com.mysema.querydsl/querydsl-codegen/2.8.2/source/7cdd39e8bcece02bfe56369f8ad7f57094258204/querydsl-codegen-2.8.2-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-23/filestore/com.mysema.querydsl/querydsl-codegen/2.8.2/source/7cdd39e8bcece02bfe56369f8ad7f57094258204/querydsl-codegen-2.8.2-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

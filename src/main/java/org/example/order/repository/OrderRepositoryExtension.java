@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport
 public class OrderRepositoryExtension extends QueryDslRepositorySupport implements Order {
 
     public OrderRepositoryExtension() {
+        super(Order.class);
     }
 
     @Override

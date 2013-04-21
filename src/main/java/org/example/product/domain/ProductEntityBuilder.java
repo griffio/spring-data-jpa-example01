@@ -1,9 +1,12 @@
 package org.example.product.domain;
 
+import java.math.BigDecimal;
+
 public class ProductEntityBuilder {
 
     private Long id;
-    private Sku productCode;
+    private Sku code;
+    private BigDecimal cost;
 
     public ProductEntityBuilder() {
     }
@@ -13,13 +16,20 @@ public class ProductEntityBuilder {
         return this;
     }
 
-    public ProductEntityBuilder productCode (Sku productCode) {
-        this.productCode = productCode;
+    public ProductEntityBuilder code (Sku code) {
+        this.code = code;
+        return this;
+    }
+
+    public ProductEntityBuilder cost (BigDecimal cost) {
+        this.cost = cost;
         return this;
     }
 
     public ProductEntity build() {
-        return new ProductEntity(id, productCode);
+        return new ProductEntity(id, code, cost);
     }
+
+
 
 }
