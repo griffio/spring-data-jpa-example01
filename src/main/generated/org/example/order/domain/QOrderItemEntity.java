@@ -18,7 +18,7 @@ public class QOrderItemEntity extends EntityPathBase<OrderItemEntity> {
 
     private static final long serialVersionUID = 1204606696;
 
-    private static final PathInits INITS = PathInits.DIRECT;
+    private static final PathInits INITS = PathInits.DIRECT2;
 
     public static final QOrderItemEntity orderItemEntity = new QOrderItemEntity("orderItemEntity");
 
@@ -37,9 +37,8 @@ public class QOrderItemEntity extends EntityPathBase<OrderItemEntity> {
         this(OrderItemEntity.class, forVariable(variable), INITS);
     }
 
-    @SuppressWarnings("all")
     public QOrderItemEntity(Path<? extends OrderItemEntity> path) {
-        this((Class)path.getType(), path.getMetadata(), path.getMetadata().isRoot() ? INITS : PathInits.DEFAULT);
+        this(path.getType(), path.getMetadata(), path.getMetadata().isRoot() ? INITS : PathInits.DEFAULT);
     }
 
     public QOrderItemEntity(PathMetadata<?> metadata) {

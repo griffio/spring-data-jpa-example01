@@ -27,15 +27,14 @@ public class QOrderEntity extends EntityPathBase<OrderEntity> {
     //inherited
     public final NumberPath<Long> id = _super.id;
 
-    public final ListPath<OrderItemEntity, QOrderItemEntity> items = this.<OrderItemEntity, QOrderItemEntity>createList("items", OrderItemEntity.class, QOrderItemEntity.class, PathInits.DIRECT);
+    public final ListPath<OrderItemEntity, QOrderItemEntity> items = this.<OrderItemEntity, QOrderItemEntity>createList("items", OrderItemEntity.class, QOrderItemEntity.class, PathInits.DIRECT2);
 
     public QOrderEntity(String variable) {
         super(OrderEntity.class, forVariable(variable));
     }
 
-    @SuppressWarnings("all")
     public QOrderEntity(Path<? extends OrderEntity> path) {
-        super((Class)path.getType(), path.getMetadata());
+        super(path.getType(), path.getMetadata());
     }
 
     public QOrderEntity(PathMetadata<?> metadata) {

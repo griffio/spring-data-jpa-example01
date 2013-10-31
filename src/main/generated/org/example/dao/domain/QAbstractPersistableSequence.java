@@ -25,9 +25,8 @@ public class QAbstractPersistableSequence extends EntityPathBase<AbstractPersist
         super(AbstractPersistableSequence.class, forVariable(variable));
     }
 
-    @SuppressWarnings("all")
     public QAbstractPersistableSequence(Path<? extends AbstractPersistableSequence> path) {
-        super((Class)path.getType(), path.getMetadata());
+        super(path.getType(), path.getMetadata());
     }
 
     public QAbstractPersistableSequence(PathMetadata<?> metadata) {

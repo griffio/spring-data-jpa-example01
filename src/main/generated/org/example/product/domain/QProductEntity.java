@@ -32,9 +32,8 @@ public class QProductEntity extends EntityPathBase<ProductEntity> {
         super(ProductEntity.class, forVariable(variable));
     }
 
-    @SuppressWarnings("all")
     public QProductEntity(Path<? extends ProductEntity> path) {
-        super((Class)path.getType(), path.getMetadata());
+        super(path.getType(), path.getMetadata());
     }
 
     public QProductEntity(PathMetadata<?> metadata) {

@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-import static com.mysema.query.collections.MiniApi.from;
+import static com.mysema.query.collections.CollQueryFactory.from;
 import static com.mysema.query.group.GroupBy.groupBy;
 import static com.mysema.query.group.GroupBy.list;
 import static org.example.product.domain.QProductEntity.productEntity;

@@ -13,14 +13,14 @@ dependencies {
   
     compile group: 'com.google.guava', name: 'guava', version: '13.0.1'
 
-    compile group: 'com.mysema.querydsl', name: 'querydsl-jpa', version: '2.8.2'
-    compile group: 'com.mysema.querydsl', name: 'querydsl-apt', version: '2.8.2'
-    compile group: 'com.mysema.querydsl', name: 'querydsl-collections', version: '2.8.2'
+    compile group: 'com.mysema.querydsl', name: 'querydsl-jpa', version: '3.2.4'
+    compile group: 'com.mysema.querydsl', name: 'querydsl-apt', version: '3.2.4'
+    compile group: 'com.mysema.querydsl', name: 'querydsl-collections', version: '3.2.4'
 
-    compile group: 'org.springframework',  name: 'spring-context', version: '3.2.2.RELEASE'
-    compile group: 'org.springframework',  name: 'spring-orm', version: '3.2.2.RELEASE'
+    compile group: 'org.springframework',  name: 'spring-context', version: '3.2.4.RELEASE'
+    compile group: 'org.springframework',  name: 'spring-orm', version: '3.2.4.RELEASE'
 
-    compile ('org.springframework.data:spring-data-jpa:1.3.0.RELEASE') {
+    compile ('org.springframework.data:spring-data-jpa:1.4.2.RELEASE') {
         exclude(group: 'org.junit')
         exclude(group: 'org.hamcrest')
     }
@@ -37,7 +37,7 @@ dependencies {
     compile group: 'org.jadira.usertype', name: 'usertype.core', version: '3.0.0.GA'
 
     testCompile group: 'org.testng',  name: 'testng', version: '6.3'
-    testCompile group: 'org.springframework',  name: 'spring-test', version: '3.2.2.RELEASE'
+    testCompile group: 'org.springframework',  name: 'spring-test', version: '3.2.4.RELEASE'
     testCompile group: 'org.hamcrest',  name: 'hamcrest-library', version: '1.3'
     testCompile group: 'org.hamcrest',  name: 'hamcrest-integration', version: '1.3'
 
