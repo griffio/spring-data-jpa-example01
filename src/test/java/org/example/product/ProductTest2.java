@@ -56,6 +56,10 @@ public class ProductTest2 extends AbstractTestNGSpringContextTests {
 
         Iterable<ProductEntity> allProducts = productRepository.findAll();
 
+        BigDecimal totalCost = from(productEntity, allProducts).singleResult(productEntity.cost.sum());
+
+        System.out.println("totalCost = " + totalCost);
+
         Map<BigDecimal, List<ProductEntity>> results = from(productEntity, allProducts)
                 .orderBy(productEntity.cost.desc())
                 .transform(groupBy(productEntity.cost)

@@ -25,9 +25,9 @@ dependencies {
         exclude(group: 'org.hamcrest')
     }
 
-    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '4.1.8.Final'
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '4.2.7.Final'
 
-    compile group: 'org.hibernate', name: 'hibernate-ehcache', version: '4.1.8.Final'
+    compile group: 'org.hibernate', name: 'hibernate-ehcache', version: '4.2.7.Final'
 
     compile group: 'org.hsqldb', name: 'hsqldb', version: '2.2.8'
 

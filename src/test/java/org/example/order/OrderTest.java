@@ -13,8 +13,10 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 
 import javax.inject.Inject;
+import java.math.BigDecimal;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.comparesEqualTo;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
@@ -60,6 +62,10 @@ public class OrderTest extends AbstractTestNGSpringContextTests {
         assertThat(first.getId(), notNullValue());
         assertThat(first.getCreated(), notNullValue());
         assertThat(first.getItems().size(), equalTo(2));
+
+        BigDecimal sum2 = orderRepository.totalCost(first.getId());
+
+        assertThat(sum2, comparesEqualTo(new BigDecimal("4.98")));
 
     }
 

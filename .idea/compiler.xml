@@ -17,7 +17,7 @@
       <entry name="?*.sql" />
     </wildcardResourcePatterns>
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="false">
+      <profile default="true" name="Default" enabled="true">
         <processor name="com.mysema.query.apt.jpa.JPAAnnotationProcessor" />
         <processorPath useClasspath="true" />
       </profile>
