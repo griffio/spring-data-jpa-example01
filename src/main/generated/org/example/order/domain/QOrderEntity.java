@@ -16,7 +16,7 @@ import com.mysema.query.types.path.PathInits;
 @Generated("com.mysema.query.codegen.EntitySerializer")
 public class QOrderEntity extends EntityPathBase<OrderEntity> {
 
-    private static final long serialVersionUID = -996007179;
+    private static final long serialVersionUID = -996007179L;
 
     public static final QOrderEntity orderEntity = new QOrderEntity("orderEntity");
 
@@ -30,7 +30,7 @@ public class QOrderEntity extends EntityPathBase<OrderEntity> {
     public final ListPath<OrderItemEntity, QOrderItemEntity> items = this.<OrderItemEntity, QOrderItemEntity>createList("items", OrderItemEntity.class, QOrderItemEntity.class, PathInits.DIRECT2);
 
     public QOrderEntity(String variable) {
-        super(OrderEntity.class, forVariable(variable));
+        super(OrderEntity.class,  forVariable(variable));
     }
 
     public QOrderEntity(Path<? extends OrderEntity> path) {
@@ -38,7 +38,7 @@ public class QOrderEntity extends EntityPathBase<OrderEntity> {
     }
 
     public QOrderEntity(PathMetadata<?> metadata) {
-        super(OrderEntity.class, metadata);
+        super(OrderEntity.class,  metadata);
     }
 
 }

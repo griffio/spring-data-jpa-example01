@@ -15,14 +15,14 @@ import com.mysema.query.types.Path;
 @Generated("com.mysema.query.codegen.SupertypeSerializer")
 public class QAbstractPersistableSequence extends EntityPathBase<AbstractPersistableSequence> {
 
-    private static final long serialVersionUID = 222442093;
+    private static final long serialVersionUID = 222442093L;
 
     public static final QAbstractPersistableSequence abstractPersistableSequence = new QAbstractPersistableSequence("abstractPersistableSequence");
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public QAbstractPersistableSequence(String variable) {
-        super(AbstractPersistableSequence.class, forVariable(variable));
+        super(AbstractPersistableSequence.class,  forVariable(variable));
     }
 
     public QAbstractPersistableSequence(Path<? extends AbstractPersistableSequence> path) {
@@ -30,7 +30,7 @@ public class QAbstractPersistableSequence extends EntityPathBase<AbstractPersist
     }
 
     public QAbstractPersistableSequence(PathMetadata<?> metadata) {
-        super(AbstractPersistableSequence.class, metadata);
+        super(AbstractPersistableSequence.class,  metadata);
     }
 
 }

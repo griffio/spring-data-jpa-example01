@@ -15,7 +15,7 @@ import com.mysema.query.types.Path;
 @Generated("com.mysema.query.codegen.EntitySerializer")
 public class QProductEntity extends EntityPathBase<ProductEntity> {
 
-    private static final long serialVersionUID = 1070125141;
+    private static final long serialVersionUID = 1070125141L;
 
     public static final QProductEntity productEntity = new QProductEntity("productEntity");
 
@@ -29,7 +29,7 @@ public class QProductEntity extends EntityPathBase<ProductEntity> {
     public final SimplePath<Sku> productCode = createSimple("productCode", Sku.class);
 
     public QProductEntity(String variable) {
-        super(ProductEntity.class, forVariable(variable));
+        super(ProductEntity.class,  forVariable(variable));
     }
 
     public QProductEntity(Path<? extends ProductEntity> path) {
@@ -37,7 +37,7 @@ public class QProductEntity extends EntityPathBase<ProductEntity> {
     }
 
     public QProductEntity(PathMetadata<?> metadata) {
-        super(ProductEntity.class, metadata);
+        super(ProductEntity.class,  metadata);
     }
 
 }
