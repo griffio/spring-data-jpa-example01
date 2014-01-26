@@ -1,6 +1,9 @@
 .DS_Store
 classes
+.idea/ant.xml
 .idea/dictionaries
+.idea/inspectionProfiles
 .idea/scopes
 .idea/workspace.xml
 .idea/libraries
+/spring-data-jpa-example01.iml
