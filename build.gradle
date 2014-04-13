@@ -1,5 +1,8 @@
 apply plugin: 'java'
 
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
 repositories {
     mavenCentral()
 }
@@ -8,63 +11,71 @@ configurations {
     aptCompile
 }
 
-configurations.compile {
-      exclude(group: 'xml-apis')
-      exclude(group: 'commons-logging')
-      exclude(group: 'org.junit')
+configurations {
+    all*.exclude group: 'xml-apis'
+    all*.exclude group: 'junit'
+    all*.exclude module: 'slf4j-log4j12'
 }
 
-configurations.compile.resolutionStrategy {
-   // failOnVersionConflict()
+def groupVersionOverrides = [
+        "com.google.guava"   : "13.0.1",
+        "org.springframework": "4.0.3.RELEASE",
+        "org.hibernate"      : "4.3.5.Final",
+        "org.slf4j"          : "1.7.7"
+]
+
+configurations.all {
+
+    resolutionStrategy {
+
+        failOnVersionConflict()
+
+        eachDependency { DependencyResolveDetails details ->
+
+            def overrideVersion = groupVersionOverrides[details.requested.group]
+
+            if (overrideVersion != null && details.requested.version != overrideVersion) {
+                details.useVersion overrideVersion
+            }
+        }
+    }
 }
 
 dependencies {
 
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.0.13'
+
     aptCompile group: 'com.mysema.querydsl', name: 'querydsl-apt', version: '3.3.2'
 
-    compile(
-            [group: 'com.mysema.querydsl', name: 'querydsl-jpa', version: '3.3.2'],
-            [group: 'com.mysema.querydsl', name: 'querydsl-collections', version: '3.3.2']
-    )
+    compile group: 'com.mysema.querydsl', name: 'querydsl-jpa', version: '3.3.2'
 
-    compile(
-            [group: 'org.springframework', name: 'spring-aop', version: '4.0.3.RELEASE'],
-            [group: 'org.springframework', name: 'spring-beans', version: '4.0.3.RELEASE'],
-            [group: 'org.springframework', name: 'spring-context', version: '4.0.3.RELEASE'],
-            [group: 'org.springframework', name: 'spring-core', version: '4.0.3.RELEASE'],
-            [group: 'org.springframework', name: 'spring-expression', version: '4.0.3.RELEASE'],
-            [group: 'org.springframework', name: 'spring-jdbc', version: '4.0.3.RELEASE'],
-            [group: 'org.springframework', name: 'spring-orm', version: '4.0.3.RELEASE'],
-            [group: 'org.springframework', name: 'spring-tx', version: '4.0.3.RELEASE'],
-            [group: 'org.hibernate', name: 'hibernate-entitymanager', version: '4.3.5.Final'],
-            [group: 'org.hibernate', name: 'hibernate-ehcache', version: '4.3.5.Final'],
-            [group: 'com.google.guava', name: 'guava', version: '13.0.1'],
-            [group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.6.1'],
-            [group: 'org.slf4j', name: 'slf4j-api', version: '1.6.1']
-    )
+    compile group: 'com.mysema.querydsl', name: 'querydsl-collections', version: '3.3.2'
+
+    compile group: 'org.springframework', name: 'spring-context', version: '4.0.3.RELEASE'
 
     compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.5.1.RELEASE'
 
-    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version: '1.0.0.Final'
-
     compile group: 'org.hsqldb', name: 'hsqldb', version: '2.2.8'
-
-    compile group: 'javax.inject', name: 'javax.inject', version: '1'
 
     compile group: 'joda-time', name: 'joda-time', version: '2.1'
 
-    compile (group: 'org.jadira.usertype', name: 'usertype.core', version: '3.1.0.GA')
+    compile group: 'org.jadira.usertype', name: 'usertype.core', version: '3.1.0.GA'
+
+    compile group: 'org.hibernate', name: 'hibernate-ehcache', version: '4.3.5.Final'
+
+    testCompile group: 'org.springframework', name: 'spring-test', version: '4.0.3.RELEASE'
 
     testCompile group: 'org.testng', name: 'testng', version: '6.3'
-    testCompile group: 'org.springframework', name: 'spring-test', version: '4.0.3.RELEASE'
+
     testCompile group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3'
+
     testCompile group: 'org.hamcrest', name: 'hamcrest-integration', version: '1.3'
 
 }
 
 sourceSets {
 
-    // source set reference object for generated sources
+// source set reference object for generated sources
     apt {
         java {
             srcDirs = ['src/main/generated']
@@ -85,7 +96,7 @@ task queryDsl(type: JavaCompile, group: 'build', description: 'Invoke annotation
 compileJava {
     dependsOn queryDsl
     source = sourceSets.main.java + sourceSets.apt.java
-    // combine the generated source with main, could use sourceSets.all
+// combine the generated source with main, could use sourceSets.all
 }
 
 clean {

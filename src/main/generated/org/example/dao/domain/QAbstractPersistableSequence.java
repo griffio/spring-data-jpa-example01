@@ -22,7 +22,7 @@ public class QAbstractPersistableSequence extends EntityPathBase<AbstractPersist
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public QAbstractPersistableSequence(String variable) {
-        super(AbstractPersistableSequence.class,  forVariable(variable));
+        super(AbstractPersistableSequence.class, forVariable(variable));
     }
 
     public QAbstractPersistableSequence(Path<? extends AbstractPersistableSequence> path) {
@@ -30,7 +30,7 @@ public class QAbstractPersistableSequence extends EntityPathBase<AbstractPersist
     }
 
     public QAbstractPersistableSequence(PathMetadata<?> metadata) {
-        super(AbstractPersistableSequence.class,  metadata);
+        super(AbstractPersistableSequence.class, metadata);
     }
 
 }

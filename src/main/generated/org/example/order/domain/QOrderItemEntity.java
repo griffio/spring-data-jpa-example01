@@ -34,7 +34,7 @@ public class QOrderItemEntity extends EntityPathBase<OrderItemEntity> {
     public final NumberPath<Integer> quantity = createNumber("quantity", Integer.class);
 
     public QOrderItemEntity(String variable) {
-        this(OrderItemEntity.class,  forVariable(variable), INITS);
+        this(OrderItemEntity.class, forVariable(variable), INITS);
     }
 
     public QOrderItemEntity(Path<? extends OrderItemEntity> path) {
@@ -46,7 +46,7 @@ public class QOrderItemEntity extends EntityPathBase<OrderItemEntity> {
     }
 
     public QOrderItemEntity(PathMetadata<?> metadata, PathInits inits) {
-        this(OrderItemEntity.class,  metadata, inits);
+        this(OrderItemEntity.class, metadata, inits);
     }
 
     public QOrderItemEntity(Class<? extends OrderItemEntity> type, PathMetadata<?> metadata, PathInits inits) {

@@ -30,7 +30,7 @@ public class QOrderEntity extends EntityPathBase<OrderEntity> {
     public final ListPath<OrderItemEntity, QOrderItemEntity> items = this.<OrderItemEntity, QOrderItemEntity>createList("items", OrderItemEntity.class, QOrderItemEntity.class, PathInits.DIRECT2);
 
     public QOrderEntity(String variable) {
-        super(OrderEntity.class,  forVariable(variable));
+        super(OrderEntity.class, forVariable(variable));
     }
 
     public QOrderEntity(Path<? extends OrderEntity> path) {
@@ -38,7 +38,7 @@ public class QOrderEntity extends EntityPathBase<OrderEntity> {
     }
 
     public QOrderEntity(PathMetadata<?> metadata) {
-        super(OrderEntity.class,  metadata);
+        super(OrderEntity.class, metadata);
     }
 
 }
