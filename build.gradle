@@ -1,98 +1,96 @@
 plugins {
-    id "java"
-    id 'com.ewerk.gradle.plugins.querydsl' version '1.0.3'
+  id 'java'
+  id 'com.ewerk.gradle.plugins.querydsl' version '1.0.3'
 }
-ext.sourceCompatibility = 1.7
-ext.targetCompatibility = 1.7
 
 repositories {
-    mavenCentral()
+  jcenter()
 }
 
 configurations {
-    providedCompile
-}
-
-configurations {
-    all*.exclude group: 'xml-apis'
-    all*.exclude group: 'commons-logging'
-    all*.exclude module: 'slf4j-log4j12'
+  all*.exclude group: 'xml-apis'
+  all*.exclude group: 'commons-logging'
+  all*.exclude module: 'slf4j-log4j12'
 }
 
 def groupVersionOverrides = [
-        "com.google.guava:guava"               : "$guavaVersion",
-        "org.hibernate:hibernate-core"         : "$hibernateVersion",
-        "org.hibernate:hibernate-entitymanager": "$hibernateVersion",
-        "org.springframework:spring-aop"       : "$springVersion",
-        "org.springframework:spring-beans"     : "$springVersion",
-        "org.springframework:spring-context"   : "$springVersion",
-        "org.springframework:spring-core"      : "$springVersion",
-        "org.springframework:spring-tx"        : "$springVersion",
-        "org.springframework:spring-jdbc"      : "$springVersion",
-        "org.springframework:spring-orm"       : "$springVersion",
-        "org.slf4j:slf4j-api"                  : "$slf4jVersion",
-        "junit:junit"                          : "$junitVersion",
+    "com.google.guava:guava"               : "$guavaVersion",
+    "org.hibernate:hibernate-core"         : "$hibernateVersion",
+    "org.hibernate:hibernate-entitymanager": "$hibernateVersion",
+    "org.springframework:spring-aop"       : "$springVersion",
+    "org.springframework:spring-beans"     : "$springVersion",
+    "org.springframework:spring-context"   : "$springVersion",
+    "org.springframework:spring-core"      : "$springVersion",
+    "org.springframework:spring-tx"        : "$springVersion",
+    "org.springframework:spring-jdbc"      : "$springVersion",
+    "org.springframework:spring-orm"       : "$springVersion",
+    "org.slf4j:slf4j-api"                  : "$slf4jVersion",
+    "junit:junit"                          : "$junitVersion"
 ]
 
 configurations.all {
 
-    resolutionStrategy {
+  resolutionStrategy {
 
-        failOnVersionConflict()
+    failOnVersionConflict()
 
-        eachDependency { DependencyResolveDetails details ->
+    eachDependency { DependencyResolveDetails details ->
 
-            println details.requested.version
+      println details.requested.version
 
-            def overrideVersion = groupVersionOverrides[details.requested.group + ":" + details.requested.name]
+      def overrideVersion = groupVersionOverrides[details.requested.group + ":" + details.requested.name]
 
-            if (overrideVersion != null && details.requested.version != overrideVersion) {
-                details.useVersion overrideVersion
-            }
-        }
+      if (overrideVersion != null && details.requested.version != overrideVersion) {
+        details.useVersion overrideVersion
+      }
     }
+  }
 }
 
 dependencies {
 
-    providedCompile(
-            "com.mysema.querydsl:querydsl-apt:$querydslVersion",
-            "com.google.auto.value:auto-value:$autovalueVersion")
+  compile(
+      "com.mysema.querydsl:querydsl-jpa:$querydslVersion",
+      "com.mysema.querydsl:querydsl-collections:$querydslVersion",
+      "org.springframework.data:spring-data-jpa:$springdataVersion",
+      "org.hsqldb:hsqldb:$hsqldbVersion",
+      "joda-time:joda-time:$jodatimeVersion",
+      "org.hibernate:hibernate-ehcache:$hibernateVersion",
+      "org.hibernate:hibernate-validator:$hibernateValidatorVersion",
+      "org.jadira.usertype:usertype.core:$jadiraVersion",
+      "net.ttddyy:datasource-proxy:$ttddyyVersion"
+  )
 
-    compile(
-            "com.mysema.querydsl:querydsl-jpa:$querydslVersion",
-            "com.mysema.querydsl:querydsl-collections:$querydslVersion",
-            "org.springframework.data:spring-data-jpa:$springdataVersion",
-            "org.hsqldb:hsqldb:$hsqldbVersion",
-            "joda-time:joda-time:$jodatimeVersion",
-            "org.hibernate:hibernate-ehcache:$hibernateVersion",
-            "org.hibernate:hibernate-validator:$hibernateValidatorVersion",
-            "org.jadira.usertype:usertype.core:$jadiraVersion",
-            "net.ttddyy:datasource-proxy:$ttddyyVersion"
-    )
+  runtime(
+      "ch.qos.logback:logback-classic:$logbackVersion",
+  )
 
-    runtime(
-            "ch.qos.logback:logback-classic:$logbackVersion",
-    )
-
-    testCompile(
-            "com.google.guava:guava-testlib:$guavaVersion",
-            "org.springframework:spring-test:$springVersion",
-            "org.testng:testng:$testngVersion")
+  testCompile(
+      "com.google.guava:guava-testlib:$guavaVersion",
+      "org.springframework:spring-test:$springVersion",
+      "org.testng:testng:$testngVersion")
 
 }
 
 querydsl {
-    jpa = true
-    querydslDefault = true
+  library = "com.mysema.querydsl:querydsl-apt:$querydslVersion"
+  querydslSourcesDir = "src/querydsl/java"
+  jpa = true
+  querydslDefault = true
+}
+
+tasks.withType(JavaCompile) {
+  description = "javac: ignore processor hints, keep all other hints"
+  sourceCompatibility = JavaVersion.VERSION_1_7
+  targetCompatibility = JavaVersion.VERSION_1_7
+  options.compilerArgs += ["-Xlint:all,-processing"]
+  options.encoding = "UTF-8"
 }
 
 test {
-    useTestNG()
-    minHeapSize = "128m"
-    maxHeapSize = "128m"
+  useTestNG()
+  minHeapSize = "128m"
+  maxHeapSize = "128m"
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.2.1'
-}
+apply from: 'wrapper.gradle'

@@ -19,46 +19,48 @@ import javax.persistence.Table;
 @AttributeOverride(name = "id", column = @Column(name = "ORDER_ITEM_ID"))
 public class OrderItemEntity extends AbstractPersistableSequence {
 
-    @Column(name = "QUANTITY", nullable = false)
-    private Integer quantity;
-    @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID")
-    private ProductEntity product;
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "ORDER_ID")
-    private OrderEntity order;
+  private static final long serialVersionUID = -42L;
 
-    protected OrderItemEntity() {
-    }
+  @Column(name = "QUANTITY", nullable = false)
+  private Integer quantity;
+  @ManyToOne
+  @JoinColumn(name = "PRODUCT_ID")
+  private ProductEntity product;
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "ORDER_ID")
+  private OrderEntity order;
 
-    public OrderItemEntity(Long id, OrderEntity order, ProductEntity product) {
-        setId(id);
-        this.order = order;
-        this.product = product;
-        this.quantity = 1;
-    }
+  protected OrderItemEntity() {
+  }
 
-    public OrderEntity getOrder() {
-        return order;
-    }
+  public OrderItemEntity(Long id, OrderEntity order, ProductEntity product) {
+    setId(id);
+    this.order = order;
+    this.product = product;
+    this.quantity = 1;
+  }
 
-    public void setOrder(OrderEntity order) {
-        this.order = order;
-    }
+  public OrderEntity getOrder() {
+    return order;
+  }
 
-    public ProductEntity getProduct() {
-        return product;
-    }
+  public void setOrder(OrderEntity order) {
+    this.order = order;
+  }
 
-    public void setProduct(ProductEntity product) {
-        this.product = product;
-    }
+  public ProductEntity getProduct() {
+    return product;
+  }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
+  public void setProduct(ProductEntity product) {
+    this.product = product;
+  }
 
-    public Integer getQuantity() {
-        return quantity;
-    }
+  public void setQuantity(Integer quantity) {
+    this.quantity = quantity;
+  }
+
+  public Integer getQuantity() {
+    return quantity;
+  }
 }

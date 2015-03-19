@@ -23,39 +23,41 @@ import static com.google.common.collect.Lists.newArrayList;
 @Entity()
 @Table(name = "CUSTOMER_ORDER")
 @SequenceGenerator(name = "sequence", sequenceName = "CUSTOMER_ORDER_SEQ", initialValue = 1, allocationSize = 1)
-@AttributeOverride(name="id", column=@Column(name="ORDER_ID"))
+@AttributeOverride(name = "id", column = @Column(name = "ORDER_ID"))
 public class OrderEntity extends AbstractPersistableSequence {
 
-    @Column(name="CREATED", nullable = false)
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
-    private LocalDateTime created;
-    @OneToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY, mappedBy = "order")
-    private List<OrderItemEntity> items;
+  private static final long serialVersionUID = -42L;
 
-    protected OrderEntity() {
-    }
+  @Column(name = "CREATED", nullable = false)
+  @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+  private LocalDateTime created;
+  @OneToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY, mappedBy = "order")
+  private List<OrderItemEntity> items;
 
-    public OrderEntity(Long id, LocalDateTime created) {
-        setId(id);
-        this.created = created;
-        this.items = newArrayList();
-    }
+  protected OrderEntity() {
+  }
 
-    public LocalDateTime getCreated() {
-        return created;
-    }
+  public OrderEntity(Long id, LocalDateTime created) {
+    setId(id);
+    this.created = created;
+    this.items = newArrayList();
+  }
 
-    public OrderItemEntity addProductItem(ProductEntity product) {
-        OrderItemEntity orderItem= new OrderItemEntity();
-        orderItem.setOrder(this);
-        orderItem.setProduct(product);
-        orderItem.setQuantity(1);
-        items.add(orderItem);
-        return orderItem;
-    }
+  public LocalDateTime getCreated() {
+    return created;
+  }
 
-    public List<OrderItemEntity> getItems() {
-        return Lists.newArrayList(items);
-    }
+  public OrderItemEntity addProductItem(ProductEntity product) {
+    OrderItemEntity orderItem = new OrderItemEntity();
+    orderItem.setOrder(this);
+    orderItem.setProduct(product);
+    orderItem.setQuantity(1);
+    items.add(orderItem);
+    return orderItem;
+  }
+
+  public List<OrderItemEntity> getItems() {
+    return Lists.newArrayList(items);
+  }
 
 }

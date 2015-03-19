@@ -20,26 +20,28 @@ import java.math.BigDecimal;
 @TypeDef(defaultForType = Sku.class, typeClass = SkuType.class)
 public class ProductEntity extends AbstractPersistableSequence {
 
-    @Column(name = "product_sku")
-    private Sku productCode;
-    @Column(name = "product_cost")
-    private BigDecimal cost;
+  private static final long serialVersionUID = -42L;
 
-    protected ProductEntity() {
-    }
+  @Column(name = "product_sku")
+  private Sku productCode;
+  @Column(name = "product_cost")
+  private BigDecimal cost;
 
-    public ProductEntity(Long id, Sku productCode, BigDecimal cost) {
-        setId(id);
-        this.productCode = productCode;
-        this.cost = cost;
-    }
+  protected ProductEntity() {
+  }
 
-    public Sku getProductCode() {
-        return productCode;
-    }
+  public ProductEntity(Long id, Sku productCode, BigDecimal cost) {
+    setId(id);
+    this.productCode = productCode;
+    this.cost = cost;
+  }
 
-    public BigDecimal getCost() {
-        return cost;
-    }
+  public Sku getProductCode() {
+    return productCode;
+  }
+
+  public BigDecimal getCost() {
+    return cost;
+  }
 
 }

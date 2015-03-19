@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 public class Sku implements Serializable {
 
+    private static final long serialVersionUID = -42L;
+
     private String code;
 
     public Sku(String code) {

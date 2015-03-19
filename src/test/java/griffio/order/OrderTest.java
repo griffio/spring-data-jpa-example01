@@ -19,7 +19,6 @@ import java.math.BigDecimal;
 
 import static com.google.common.truth.Truth.ASSERT;
 
-
 @Test
 @ContextConfiguration(classes = ApplicationConfiguration.class)
 public class OrderTest extends AbstractTestNGSpringContextTests {
