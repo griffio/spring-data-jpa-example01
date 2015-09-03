@@ -1,10 +1,19 @@
 plugins {
-  id 'java'
-  id 'com.ewerk.gradle.plugins.querydsl' version '1.0.4'
+  id "java"
+  id "io.spring.dependency-management" version "0.5.2.RELEASE"
+  id "com.ewerk.gradle.plugins.querydsl" version "1.0.5"
 }
 
 repositories {
   jcenter()
+}
+
+dependencyManagement {
+//For Spring Framework a plain version is used. For Spring Data we refer to a particular revision of a release train.
+  imports {
+    mavenBom "org.springframework:spring-framework-bom:$springVersion"
+    mavenBom "org.springframework.data:spring-data-releasetrain:$springdataVersion"
+  }
 }
 
 configurations {
@@ -17,13 +26,6 @@ def groupVersionOverrides = [
     "com.google.guava:guava"               : "$guavaVersion",
     "org.hibernate:hibernate-core"         : "$hibernateVersion",
     "org.hibernate:hibernate-entitymanager": "$hibernateVersion",
-    "org.springframework:spring-aop"       : "$springVersion",
-    "org.springframework:spring-beans"     : "$springVersion",
-    "org.springframework:spring-context"   : "$springVersion",
-    "org.springframework:spring-core"      : "$springVersion",
-    "org.springframework:spring-tx"        : "$springVersion",
-    "org.springframework:spring-jdbc"      : "$springVersion",
-    "org.springframework:spring-orm"       : "$springVersion",
     "org.slf4j:slf4j-api"                  : "$slf4jVersion",
     "junit:junit"                          : "$junitVersion"
 ]
@@ -48,28 +50,26 @@ configurations.all {
 }
 
 dependencies {
-
   compile(
-      "com.mysema.querydsl:querydsl-jpa:$querydslVersion",
+      'org.springframework.data:spring-data-jpa',
       "com.mysema.querydsl:querydsl-collections:$querydslVersion",
-      "org.springframework.data:spring-data-jpa:$springdataVersion",
-      "org.hsqldb:hsqldb:$hsqldbVersion",
+      "com.mysema.querydsl:querydsl-jpa:$querydslVersion",
       "joda-time:joda-time:$jodatimeVersion",
+      "net.ttddyy:datasource-proxy:$ttddyyVersion",
       "org.hibernate:hibernate-ehcache:$hibernateVersion",
       "org.hibernate:hibernate-validator:$hibernateValidatorVersion",
-      "org.jadira.usertype:usertype.core:$jadiraVersion",
-      "net.ttddyy:datasource-proxy:$ttddyyVersion"
-  )
+      "org.hsqldb:hsqldb:$hsqldbVersion",
+      "org.jadira.usertype:usertype.core:$jadiraVersion")
 
   runtime(
-      "ch.qos.logback:logback-classic:$logbackVersion",
+      "ch.qos.logback:logback-classic:$logbackVersion"
   )
 
+//The standard dependencies section can now list Spring and Spring Data dependencies without declaring a version and still be sure all libraries are in matching versions.
   testCompile(
       "com.google.guava:guava-testlib:$guavaVersion",
-      "org.springframework:spring-test:$springVersion",
+      'org.springframework:spring-test',
       "org.testng:testng:$testngVersion")
-
 }
 
 querydsl {
